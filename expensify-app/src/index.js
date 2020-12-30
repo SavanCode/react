@@ -1,89 +1,17 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom'; 
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter,Route,Switch,Link} from "react-router-dom";
-import { NavLink} from "react-router-dom";
-import configureStore from './store/configStore';
+import AppRouter from './routes/AppRouter'
+
+import store from './store/configStore';
 import {addExpense,editExpense} from './actions/expenses'
-import {setTextFilter,sortByAmount} from './actions/filters'
+import {setTextFilter,sortByDate,sortByAmount,setStartDate,setEndDate} from './actions/filters'
 import getVisibleExpenses from './selector/expenses'
+import filtersReducer from './reducers/filters'
+import expensesReducer from './reducers/expenses'
+import { Provider } from 'react-redux'
 
-const Header =()=>(
-  <div>
-    <h1>Portfolio</h1>
-    <NavLink exact to="/">  Home </NavLink>
-    <NavLink exact to="/Portfolio">  Portfolio </NavLink>
-    <NavLink exact to="/Contact">  Contact </NavLink> 
-  </div>);
-
-
-const Home =()=>{ 
-  return (
-    <div>
-        <h1>Welcome</h1>
-        <p>This is my site. Take a look around!</p>
-  </div>
-  )}
-  
-  const Item =()=>{
-      return (
-          <div> 
-             <Link to= "/Portfolio/1" >item 1</Link> 
-             <Link to= "/Portfolio/2" >item 2</Link>   
-          </div>
-      )}
-      
-  const ItemDetail =(props)=>{
-    return (
-        <div>  
-          <h1>A Thing I've Done</h1>
-          <p>This page is for item with the id of {props.match.params.id}</p>
-        </div>
-    )}
-
-
-  const Portfolio =()=>(
-  <div>
-    <h1>My Work</h1>
-      <p>Checkout the stuff I have done</p>
-      {/* <Link to= "/Portfolio/1" >item 1</Link> 
-      <Link to= "/Portfolio/2" >item 2</Link> */}
-      <Item />
-  </div>
-  );
-
-  const Contact =()=>(
-  <div>
-      <h1>Contact</h1>
-      <p>You can reach me at test@gmail.com</p>
-  </div>
-  );
-
-    const NotFoundPage= ()=>(
-      <div>
-        404 - <Link to="/">Go Home</Link>
-      </div>
-    )
-const Content = () => (
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/Portfolio" component={Portfolio} />
-      <Route exact path="/Portfolio/:id"  component={ItemDetail} />
-      <Route path="/Contact" component={Contact} />
-      <Route component={NotFoundPage} />
-    </Switch>
-  );
-
-const routes = (
-  <BrowserRouter>
-    <Route path="/"  component={Header} />
-      <Content /> 
-  </BrowserRouter>
- )
-
- ReactDOM.render(routes ,
-  document.getElementById('root')
-);
+// ReactDOM.render(AppRouter ,document.getElementById('root'));
  
 
 /*
@@ -171,46 +99,29 @@ console.log(store.getState())
 */
 
 
-const store = configureStore();
-//实时监控
-const unsub=store.subscribe(()=>{ 
-  const state=store.getState();
-  const visibleExpenses =getVisibleExpenses(state.expenses,state.filters);
-  console.log(visibleExpenses);
-  console.log(store.getState()); 
-})
+//const store = configureStore();
+ 
+
 
 //返回操作函数（对象包装函数） action generator
- const expenseOne = store.dispatch(addExpense({description:"cRent",amount:215610,createdAt:1000})) 
- const expenseTwo = store.dispatch(addExpense({description:"Coffee1",amount:1,createdAt:-1000})) 
- store.dispatch(addExpense({description:"Coffee2",amount:2,createdAt:2000})) 
- store.dispatch(addExpense({description:"Coffee3",amount:3,createdAt:3000}))  
+store.dispatch(addExpense({description:"water bill",createdAt:100})) 
+store.dispatch(addExpense({description:"gas bill",amount:8020,createdAt:33})) 
 
- //store.dispatch(removeExpense({id:expenseOne.expense.id}))  
- store.dispatch(editExpense(expenseTwo.expense.id,{description:"c",amount:9}))  
- store.dispatch(setTextFilter("c")); 
- store.dispatch(sortByAmount()); 
- //store.dispatch(sortByDate()); 
- //store.dispatch(setStartDate(0)); 
- //store.dispatch(setEndDate(999)); 
+//store.dispatch(setTextFilter("BILL"));  
 
-// const demoState={
-//   expenses:[{
-//     id:'poijasdfhwer',
-//     description:'January Rent',
-//     note:'This was the final payment',
-//     amount:54500,
-//     createdAt:0
-//   }],
-//   filters:{
-//     text:'rent',
-//     sortBy:'amount',//date or amount
-//     startDate:undefined,
-//     endDate:undefined,
-//   }
-// }
+const state=store.getState();
+const visibleExpenses =getVisibleExpenses(state.expenses,state.filters);
+console.log(visibleExpenses);
+console.log(store.getState());  
+
+const jsx = (
+  <Provider store={store}>
+  <AppRouter />
+  </Provider>
+)
 
 
+ReactDOM.render(jsx ,document.getElementById('root'));
 
 
 

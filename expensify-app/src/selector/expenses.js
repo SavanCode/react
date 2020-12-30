@@ -1,4 +1,4 @@
-export default (expenses,{text,sortBy,startDate,endDate})=>{
+const getVisibleExpenses=(expenses,{text,sortBy,startDate,endDate})=>{
     return expenses.filter((element)=>{
       //if not set the startdate and createdAt is ok
       const startDateMatch = typeof startDate !== 'number' || element.createdAt >= startDate;
@@ -13,3 +13,5 @@ export default (expenses,{text,sortBy,startDate,endDate})=>{
       }
     })
   }
+
+  export default getVisibleExpenses;

@@ -1,6 +1,6 @@
 //default state & reducer
 const expensesReducerDefaultState=[];
-export default (state=expensesReducerDefaultState,action)=> {
+const expensesReducer=(state=expensesReducerDefaultState,action)=> {
   switch(action.type){
     case "ADD_EXPENSE": 
     //return  state.concat(action.expense);//此处不影响原先数组 只是返回新数组 
@@ -24,3 +24,4 @@ export default (state=expensesReducerDefaultState,action)=> {
     default: return state
   }
 }
+export default expensesReducer
