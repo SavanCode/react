@@ -1,8 +1,9 @@
+import moment from 'moment'
 const getVisibleExpenses=(expenses,{text,sortBy,startDate,endDate})=>{
     return expenses.filter((element)=>{
-      //if not set the startdate and createdAt is ok
-      const startDateMatch = typeof startDate !== 'number' || element.createdAt >= startDate;
-      const endDateMatch =  typeof endDate !== 'number' || element.createdAt <= endDate;
+      /* 后于startday ok 先于 endday ok */
+      const startDateMatch = startDate ? moment(element.createdAt).isSameOrAfter(startDate,'day') : true;
+      const endDateMatch = endDate ? moment(element.createdAt).isSameOrBefore(endDate,'day'): true;
       const textMatch = element.description.toLowerCase().includes(text.toLowerCase());
       return startDateMatch && endDateMatch && textMatch;
     }).sort((a,b)=>{

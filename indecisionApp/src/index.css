@@ -1,13 +1,135 @@
+*{ 
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 body {
-  margin: 0;
+  background-color: #333745;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 600px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+#root{
+  display: flex;
+  justify-content: center;
+}
+
+
+.content{
+  padding: 1em;
+}
+.header{ 
+  color: whitesmoke;
+  background: #20222b;
+}
+.main{ 
+  width: 100%; 
+  margin-bottom: 5em;
+}
+.pickBtn{
+  padding: 2em 1em;
+}
+.pickBtn > button { 
+  background-color: #8357c5;
+  padding: 1em 1em;
+  color: whitesmoke;
+  width: 100%;
+  font-size: xx-large;
+  border-bottom: 0.6rem solid #693cad;
+  border-left: 0.4rem solid #693cad;
+}
+.optionListTop{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1em;
+  padding: 1em;
+  background-color:#3c4251;
+  color: #a5afd7;
+}
+
+.removeAllBtn{
+  background: none;
+    border: none;
+    color: #a5afd7;
+    font-size: x-large;
+}
+.optionList{
+  padding: 1em 1em 1em 2em;
+  margin: 0 1em;
+  list-style: decimal;
+  color: whitesmoke;
+  background-color: #5c627b;
+  border-bottom: 1px solid whitesmoke;
+}
+.option button{
+  float: right;
+  background: none;
+  border: none;
+  color: #a5afd7;
+  font-size: x-large;
+}
+.addOption{
+  margin: 0 1em;
+  background-color: #5c627b;
+}
+.addOption form{
+  display: flex;
+}
+.addOption input{
+  flex: 1 0 auto;
+  margin: 1em;
+  line-height: 3em;
+  background-color: #333745;
+}
+.addOption button{
+  margin: 1em;
+  background-color: #8357c5;
+  padding: 1em 1em;
+  color: whitesmoke;
+  font-size: medium;
+  border-bottom: 0.6rem solid #693cad;
+  border-left: 0.4rem solid #693cad;
+}
+.acceptBtn{
+  margin: 1em;
+  background-color: #8357c5;
+  padding: 1em 1em;
+  color: whitesmoke;
+  font-size: medium;
+  border-bottom: 0.6rem solid #693cad;
+  border-left: 0.4rem solid #693cad;
+}
+
+/* Modal 中的style 要从modal中直接加style
+.ReactModal__Overlay{
+  display: flex;
+  align-items: center;/*Vertical Centering
+  justify-content: center; 
+}
+.ReactModal__Content{
+ width: fit-content;
+ height: fit-content;
+ margin: auto;
+ background: #464b5e;
+ color: whitesmoke;
+}*/
+
+.modalItem{
+  padding: 1em ;
+  width: -webkit-fill-available;
+}
+
+.controlWidth{
+  width: 60%;
+  margin:auto;
 }

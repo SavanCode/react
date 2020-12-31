@@ -91,8 +91,13 @@ class IndecisionApp extends React.Component{
     render(){
         const subtitle = 'Put your life in the hands of a computer'
         return(
-            <div>
-                <Header subtitle={subtitle}/>
+            <div className="main">
+            <div className="header">
+                <div className="content controlWidth">
+                    <Header subtitle={subtitle}/>
+                </div>
+            </div>
+            <div className="mainBody controlWidth">
                 {/* What should i do  render pick- 弹窗+产生随机数 */}
                 <Action active={this.state.options.length} hanldPickOption={this.hanldPickOption} />
                 {/* show all options+ remove all + remove one */}
@@ -101,6 +106,7 @@ class IndecisionApp extends React.Component{
                 <AddOption addOption={this.handleAddOption}/>
                 {/* 弹框 */}
                 <OptionModal pickedOption={this.state.pickedOption} clearPickedOption={this.clearPickedOption} />  
+            </div>
             </div>
         )
     }

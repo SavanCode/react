@@ -1,14 +1,12 @@
 import React from 'react' 
-
+import './index.css'
 //header
 const Header=(props)=>(
      
-    <div className="header">
-        <div className="content">
-                <h1 className="title1">{props.title}</h1>
-                { props.subtitle && <h2 className="title2">{props.subtitle}</h2>}
+        <div>
+                <h2 className="title1">{props.title}</h2>
+                { props.subtitle && <p className="title2">{props.subtitle}</p>}
         </div> 
-    </div> 
 )
 
 Header.defaultProps={

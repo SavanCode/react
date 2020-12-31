@@ -2,8 +2,8 @@ import React from 'react'
 
 const Option= (props)=>{
     return(
-        <div>
-            <li>   {props.optionText} 
+        <div className="option">
+            <li>  {props.optionText} 
                 <button  onClick={() => props.remove(props.optionText)} >
                     remove
                 </button>
