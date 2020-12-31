@@ -4,7 +4,6 @@ class AddOption extends React.Component{
     constructor(props){
         super(props); 
         this.state={
-            newOption:null,
             error:""
         }
     }
@@ -19,6 +18,11 @@ class AddOption extends React.Component{
             console.log(option);
             this.props.addOption(option);
             e.target.elements.newOpt.value="";//清空输入值的显示
+            this.setState(()=>{
+                return{
+                    error:""
+                } 
+            })
           }else{
              this.setState(()=>{
                  return{
@@ -32,6 +36,7 @@ class AddOption extends React.Component{
     render(){
         return (
             <div className="addOption">
+                {this.state.error!=="" && <p className="optionMsg">{this.state.error}</p>}
                 <form onSubmit={this.addOption}>
                 <input name="newOpt" />
                 <button> Add Option</button>

@@ -5,6 +5,7 @@ import Action from './action.js'
 import Options from './options.js'
 import AddOption from './addOption.js'
 import OptionModal from './optionModal.js'
+import PopModal from './PopModal'
 
 
 class IndecisionApp extends React.Component{
@@ -13,6 +14,7 @@ class IndecisionApp extends React.Component{
         this.state={
             options : ["option 1","option 2","option 3"],//options : [ ]
             pickedOption:null,
+            errorMsg:""
         }
     }
 
@@ -44,17 +46,21 @@ class IndecisionApp extends React.Component{
     handleAddOption=(newOption)=>{
         //e.preventDefault(); 
         console.log("new option", newOption);
-        // if(newOption==""){
-        //     alert("please enter a vaild option");
-        //     return ;
-        // }
+        if(newOption===""){
+            console.log("please enter a vaild option");
+            return ;
+        }
         if(this.state.options.indexOf(newOption)>= 0){
-            alert("option existed, please add a new option");
+            console.log("option existed, please add a new option");
+            this.setState(()=>({
+                errorMsg:"option existed, please add a new option"
+            }))
             return ;
         }
         console.log("adding >>> ",newOption);
         this.setState(()=>({
-            options: this.state.options.concat(newOption)//为什么不能用push？？？？？？？？？
+            options: this.state.options.concat(newOption),//为什么不能用push？？？？？？？？？
+            errorMsg:""
         }))
     }
     
@@ -67,6 +73,14 @@ class IndecisionApp extends React.Component{
         console.log(this.state.pickedOption);
     }
 
+    clearError=()=>{
+        console.log("clearing error")
+        this.setState(()=>({
+            errorMsg:""
+        }))
+        console.log(this.state.errorMsg);
+    }
+
     componentDidUpdate(prevProps,prevState){
         if(prevState.options.length !== this.state.options.length){
                 console.log("options changed")
@@ -74,18 +88,16 @@ class IndecisionApp extends React.Component{
                 localStorage.setItem('option',json);
         }
     }
-    componentDidMount(){
-
-    try{
-        const json=localStorage.getItem('option');
-        const options=JSON.parse(json);
-        this.setState({
-            options,
-        })
-    }catch(error){
-        
-    }
-       
+    componentDidMount(){ 
+        try{
+            const json=localStorage.getItem('option');
+            const options=JSON.parse(json);
+            this.setState({
+                options,
+            })
+        }catch(error){
+            
+        } 
     }
 
     render(){
@@ -105,7 +117,9 @@ class IndecisionApp extends React.Component{
                 {/* add one option */}
                 <AddOption addOption={this.handleAddOption}/>
                 {/* 弹框 */}
-                <OptionModal pickedOption={this.state.pickedOption} clearPickedOption={this.clearPickedOption} />  
+                <OptionModal pickedOption={this.state.pickedOption} clearPickedOption={this.clearPickedOption} /> 
+                {this.state.errorMsg !=="" && <PopModal clearError={this.clearError} error={this.state.errorMsg} />} 
+                
             </div>
             </div>
         )
