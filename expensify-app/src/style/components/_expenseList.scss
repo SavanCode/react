@@ -1,0 +1,20 @@
+.expenseListTitle{
+    text-align: center;
+    margin: $m-size;
+    font-weight: bold;
+    font-size: $font-size-large;
+}
+.itemListHeader{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 $m-size;
+    background-color: $grey;
+    color: $off-white;
+}
+.itemList{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 $m-size;
+    padding: $m-size 0;
+    border: solid  $grey;
+}

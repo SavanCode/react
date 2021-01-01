@@ -10,7 +10,7 @@ import getVisibleExpenses from './selector/expenses'
 import filtersReducer from './reducers/filters'
 import expensesReducer from './reducers/expenses'
 import { Provider } from 'react-redux'
-
+import './style/style.scss';
 // ReactDOM.render(AppRouter ,document.getElementById('root'));
  
 

@@ -1,0 +1,19 @@
+.header {
+    background: $dark-blue;
+  }
+  .headerTitle{
+    color: $off-white;
+    font-size: xxx-large;
+    margin: 0 0 $s-size $s-size;
+  }
+  .linkList{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    padding: $s-size 0;
+    font-size: x-large;
+    margin: 0 $s-size;
+  }
+  .linkList a{
+    color: $off-white;
+  }

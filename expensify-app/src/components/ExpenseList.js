@@ -6,8 +6,9 @@ import getVisibleExpenses from '../selector/expenses'
 const selectExpenses=getVisibleExpenses;
 
 const ExpenseList =(props)=>(
-    <div>
-        <h1>Expenses</h1>
+    <div className="expenseList">
+        <p className="expenseListTitle">Expenses List</p>
+        <div className="itemListHeader"><p>ITEM</p><p>AMOUTNT</p> <p>TIME</p></div>
         {props.expenses.map((element)=>(
           <ExpenseListItem key={element.id} {...element} />  
         ))} 

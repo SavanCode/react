@@ -1,0 +1,14 @@
+.addExpense{
+    margin: $s-size;
+}
+
+
+.expenseForm form{
+    display: flex;
+    margin: $s-size;
+}
+.expenseForm button{
+    color: $off-white;
+    background-color: $dark-blue;
+    padding: 0 $m-size;
+}

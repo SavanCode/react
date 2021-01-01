@@ -3,10 +3,10 @@ import { Link} from "react-router-dom";
 import moment from 'moment'
 
 const ExpenseListItem =({description,id,amount,createdAt})=>(
-    <div> 
+    <div className="itemList"> 
         <Link to={`/edit/${id}`}>
-        <h3> {description}</h3></Link>
-        <p>{amount} - { moment(createdAt).format('LLLL')} </p>
+        <p> {description}</p></Link>
+        <p>{amount} </p> <p> { moment(createdAt).format('LLLL')} </p>
     </div>
 );
 

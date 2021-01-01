@@ -1,0 +1,18 @@
+.filters{
+    display: flex;
+    margin: $l-size $s-size;
+    justify-content: center;
+} 
+.filters select{ 
+    border: solid;
+    padding: 0 $s-size;
+    font-weight: bold; 
+}
+.keywordFilter{
+    border: solid;
+    padding: 0 $s-size;
+    width: 30%;
+}
+.DateRangePicker{
+    border: solid;
+}

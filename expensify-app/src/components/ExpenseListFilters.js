@@ -29,9 +29,11 @@ class ExpenseListFilters extends React.Component {
   render() {
     
     return (
-    <div>
+    <div className="filters">
         <input 
+        className="keywordFilter"
         type="text" 
+        placeholder="Please enter keyword to filter"
         value={this.props.filters.text}
         onChange={(e)=>{ this.props.dispatch(setTextFilter(e.target.value)) 
         }}
