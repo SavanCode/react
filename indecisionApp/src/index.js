@@ -101,7 +101,8 @@ class IndecisionApp extends React.Component{
     }
 
     render(){
-        const subtitle = 'Put your life in the hands of a computer'
+        const subtitle = 'Put your life in the hands of a computer';
+ 
         return(
             <div className="main">
             <div className="header">
@@ -123,7 +124,7 @@ class IndecisionApp extends React.Component{
             </div>
             </div>
         )
-    }
+    } 
 }
 ReactDOM.render( <IndecisionApp />, document.getElementById('root'));
 
