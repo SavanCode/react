@@ -64,7 +64,7 @@ class AddAccountPage extends React.Component{
             <Form.Label>UserName</Form.Label>
             <Form.Control type="text" placeholder="Enter UserName" value={this.state.userName}  onChange={this.handleUsernameChange} />
             <Form.Text className="text-muted">
-              We will chewck whether your username has been used
+              We will check whether your username has been used
             </Form.Text>
           </Form.Group>
 
