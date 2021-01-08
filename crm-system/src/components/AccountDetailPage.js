@@ -2,7 +2,7 @@ import React from 'react';
 import { Link} from "react-router-dom"; 
 import {connect} from 'react-redux'
 const AccountDetailPage =(props)=>{
-    console.log(props.item)//{[]}
+    //console.log(props.item)//{[]}
     return (
         <div className="detailInfo">  
             <h1>Account Detail</h1>

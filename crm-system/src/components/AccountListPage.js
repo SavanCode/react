@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import ListGroup from 'react-bootstrap/ListGroup'
 
 const AccountListPage=(props)=>{ 
-  //console.log("accountList",props)
+  console.log("accountList",props)
   return(
     <>
     {!props.state.length && <p className="errorMsg">please add an account to start</p>}
