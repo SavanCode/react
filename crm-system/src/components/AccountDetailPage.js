@@ -6,10 +6,10 @@ const AccountDetailPage =(props)=>{
     return (
         <div>  
             <h1>Account Detail</h1>
-            <p> the id of{props.item[0].id}</p>
+            <p> the id of  {props.item[0].id}</p>
             <p>UserName : {props.item[0].userName}</p>
             <p>Location ： {props.item[0].location}</p>
-            <button> <Link to="/view" >Back to Account List</Link></button>
+            <button className="btn btn-outline-primary"> <Link to="/view" >Back to Account List</Link></button>
         </div>
     )}
 

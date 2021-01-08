@@ -10,7 +10,7 @@ class AddAccountPage extends React.Component{
     super(props);
     this.state={
       userName:"",
-      Location:"",
+      location:"",
       error:""
     }
     this.currentAccountList=props.state
@@ -24,14 +24,14 @@ class AddAccountPage extends React.Component{
   
   handleLocationChange=(event)=>{  
     this.setState({
-      Location: event.target.value.replace(/\s+/g,"")
+      location: event.target.value.replace(/\s+/g,"")
     })
   }
 
   handleSubmitAccount=(e)=>{
     e.preventDefault();
     let newName =this.state.userName;
-    let newLocation =this.state.Location; 
+    let newLocation =this.state.location; 
     let existed = this.currentAccountList.filter((ele)=>(ele.userName===newName))
     console.log(existed)
     if (!newName || !newLocation) {
@@ -44,11 +44,11 @@ class AddAccountPage extends React.Component{
         error: "Please enter new userName, this userName already been used"
       });    
     }else{ 
-      this.props.dispatch(addAccount({userName:newName,Location:newLocation}));
+      this.props.dispatch(addAccount({userName:newName,location:newLocation}));
       this.props.history.push("/view");
       this.setState({
         userName:"",
-        Location:"",
+        location:"",
         error:""
       })
     }    
@@ -76,7 +76,7 @@ class AddAccountPage extends React.Component{
 
           <Form.Group controlId="formBasicLocation">
             <Form.Label>Location</Form.Label>
-            <Form.Control type="text" placeholder="Location"  value={this.state.Location}  onChange={this.handleLocationChange}/>
+            <Form.Control type="text" placeholder="Location"  value={this.state.location}  onChange={this.handleLocationChange}/>
           </Form.Group> 
           <Button variant="secondary"  type="submit">
             Create
