@@ -58,13 +58,7 @@ class AddAccountPage extends React.Component{
     console.log("AddAccountPage",this.props)
     return (
     <div> 
-      {this.state.error && <p className="errorMsg">{this.state.error}</p>}
-      {/* <form  onSubmit={this.handleSubmitAccount}> 
-          UserName :  <input  type="text" placeholder="UserName"   value={this.state.userName}  onChange={this.handleUsernameChange }/>
-          Location :  <input type="text" placeholder="Location"   value={this.state.Location}  onChange={this.handleLocationChange }/>
-          <button>Submit</button>
-      </form> */}
-
+      {this.state.error && <p className="errorMsg">{this.state.error}</p>} 
         <Form onSubmit={this.handleSubmitAccount} >
           <Form.Group controlId="formBasicUserName">
             <Form.Label>UserName</Form.Label>
@@ -95,4 +89,3 @@ const mapStateToProps = (state) => {
   }
 } 
 export default connect(mapStateToProps)(AddAccountPage)
-//export default AddAccountPage

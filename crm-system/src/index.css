@@ -46,3 +46,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
   text-align: center;
   color: red;
 }
+.detailInfo{
+  width: fit-content;
+  margin:auto;
+  /* text-align: center; */
+}

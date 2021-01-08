@@ -2,9 +2,9 @@ import React from 'react';
 import { Link} from "react-router-dom"; 
 import {connect} from 'react-redux'
 const AccountDetailPage =(props)=>{
-    console.log(props.item)
+    console.log(props.item)//{[]}
     return (
-        <div>  
+        <div className="detailInfo">  
             <h1>Account Detail</h1>
             <p> the id of  {props.item[0].id}</p>
             <p>UserName : {props.item[0].userName}</p>
@@ -12,7 +12,6 @@ const AccountDetailPage =(props)=>{
             <button className="btn btn-outline-primary"> <Link to="/view" >Back to Account List</Link></button>
         </div>
     )}
-
 
     const mapStateToProps = (state , ownProps) => {
         return  {
