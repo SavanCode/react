@@ -1,18 +1,22 @@
 import React from 'react';
 import AccountItem from './AccountItem'; 
 import {connect} from 'react-redux'
+import ListGroup from 'react-bootstrap/ListGroup'
 
-const AccountListPage=(props)=>{
-  console.log(props.accountList)
+const AccountListPage=(props)=>{ 
+  //console.log("accountList",props)
   return(
-    <div>
-       <p>{props.accountList.map((ele)=>( <AccountItem  key={ele.id} {...ele} />))}</p>
-    </div>
+    <>
+    {!props.state.length && <p className="errorMsg">please add an account to start</p>}
+    <ListGroup>
+      {props.state.map((ele)=>( <AccountItem  key={ele.id} {...ele} />))}
+      </ListGroup>
+    </>
   )}
 
   const mapStateToProps = (state /*, ownProps*/) => {
     return  {
-      accountList:state
+      state
     }
   } 
 

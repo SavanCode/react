@@ -4,8 +4,7 @@ import {editExpense,removeExpense} from '../actions/expenses'
 import {connect} from 'react-redux'
 
 
-const EditExpensePage =(props)=> {
-    console.log(props)
+const EditExpensePage =(props)=> { 
     return (
         <div> This  is edit expense, editing {props.match.params.id}  
         <ExpenseForm
