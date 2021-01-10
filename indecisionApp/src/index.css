@@ -103,6 +103,9 @@ code {
   margin: 1em;
   line-height: 3em;
   background-color: #333745;
+  color: whitesmoke;
+  font-size: large;
+  font-weight: bold;
 }
 .addOption button{
   margin: 1em;

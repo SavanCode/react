@@ -92,9 +92,12 @@ class IndecisionApp extends React.Component{
         try{
             const json=localStorage.getItem('option');
             const options=JSON.parse(json);
-            this.setState({
-                options,
-            })
+            if(options){
+                this.setState({
+                                options,
+                })
+            }
+            
         }catch(error){
             
         } 
@@ -102,7 +105,7 @@ class IndecisionApp extends React.Component{
 
     render(){
         const subtitle = 'Put your life in the hands of a computer';
- 
+        console.log(this.state.options)
         return(
             <div className="main">
             <div className="header">
