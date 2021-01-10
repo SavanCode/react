@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'; 
-
+import Button from '@material-ui/core/Button';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import Icon from '@material-ui/core/Icon';
 
 const BEEP =new Audio("https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3");
 
@@ -16,15 +19,15 @@ const convertTime=(timer)=> { //ms->m/s
 }
 
 const Title =(props)=>(
-  <div> {props.title}</div>
+  <div className="title"> {props.title}</div>
 )
  
 const Break =(props)=>(
-  <div>
+  <div className="break">
     <p id="break-label">Break Length</p>
     <p id="break-length">{props.breakLength}</p>
-    <button id="break-increment" onClick={()=>props.handleNum("BREAKUP")}>Up</button>
-    <button id="break-decrement" onClick={()=>props.handleNum("BREAKDOWN")}>Down</button> 
+    <Button color="primary" id="break-increment" onClick={()=>props.handleNum("BREAKUP")}><ArrowUpwardIcon /></Button>
+    <Button color="primary" id="break-decrement" onClick={()=>props.handleNum("BREAKDOWN")}><ArrowDownwardIcon /></Button> 
   </div>
 )
 
@@ -32,8 +35,9 @@ const Session =(props)=>(
   <div>
   <p id="session-label">session Length</p>
   <p id="session-length">{props.sessionLength}</p>
-  <button id="session-increment" onClick={()=>props.handleNum("SESSIONUP")}>Up</button>
-  <button id="session-decrement" onClick={()=>props.handleNum("SESSIONDOWN")}>Down</button> 
+  <Button color="primary" id="session-increment" onClick={()=>props.handleNum("SESSIONUP")}><ArrowUpwardIcon /></Button>
+  <Button color="primary" id="session-decrement" onClick={()=>props.handleNum("SESSIONDOWN")}><ArrowDownwardIcon /></Button> 
+
 </div>
 )
 
@@ -43,8 +47,8 @@ class Timer extends React.Component{
     this.state={
       breakLength:this.props.breakLength,
       sessionLength:this.props.sessionLength,
-      //leftTime:this.props.sessionLength*60*1000,
-      leftTime:600,
+      leftTime:this.props.sessionLength*60*1000,
+      //leftTime:600,
       currentStatus:'Session',//s
       on: false,
     }
@@ -149,16 +153,16 @@ class Timer extends React.Component{
     componentWillUnmount(){
       clearInterval(this.timer);
     }
-  
-  
 
     render(){ 
       return(
-        <div>
-          <div id="timer-label">{this.state.currentStatus}</div>
-          <div id="time-left">{convertTime(this.state.leftTime)} </div>
-          <button id="start_stop" onClick={()=>this.switchBtn()}>{this.state.on ? "stop": "start"}</button>
-          <button id="reset"  onClick={()=>{this.resetTimer()}} >Reset</button>
+        <div className="timer">
+          <div className="timer-label" id="timer-label">{this.state.currentStatus}</div>
+          <div className="time-left" id="time-left">{convertTime(this.state.leftTime)} </div>
+          <div className="buttonArea">
+          <Button className="start_stop" variant="outlined" color="primary" id="start_stop" onClick={()=>this.switchBtn()}>{this.state.on ? "stop": "start"}</Button>
+          <Button className="reset" variant="outlined" color="secondary" id="reset"  onClick={()=>{this.resetTimer()}} >Reset</Button>
+          </div>
           <audio id="beep" src={BEEP} preload="none"/>
         </div>
       )
@@ -214,8 +218,6 @@ class App extends React.Component{
     })
   }
 
-
-
   // componentDidUpdate(prevProps,prevState){
   //   console.log("App current state",this.state)
   //   //console.log(prevProps,prevState)
@@ -223,10 +225,12 @@ class App extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className="mainContent">
         <Title title="Clock"/>
+        <div className="middle">
         <Break breakLength={this.state.breakLength} handleNum={this.handleNum}/>
         <Session sessionLength={this.state.sessionLength} handleNum={this.handleNum} />
+        </div>
         <Timer breakLength={this.state.breakLength} sessionLength={this.state.sessionLength} reset={this.reset}/>
       </div>
     )
@@ -270,7 +274,7 @@ ReactDOM.render(   <App /> , document.getElementById('root'));
 //   }
 //   render() {
 //     let start = (this.state.time == 0) ?
-//       <button onClick={this.startTimer}>start</button> :
+//      <button onClick={this.startTimer}>start</button> :
 //       null
 //     let stop = (this.state.time == 0 || !this.state.isOn) ?
 //       null :
@@ -292,4 +296,4 @@ ReactDOM.render(   <App /> , document.getElementById('root'));
 //     )
 //   }
 // }
-// ReactDOM.render(   <Timer /> , document.getElementById('root'));
+// ReactDOM.render(   <Timer /> , document.getElementById('root')); 
