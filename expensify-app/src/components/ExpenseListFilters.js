@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {setTextFilter,sortByDate,sortByAmount} from '../actions/filters'
-import moment from 'moment'
+//import moment from 'moment'
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css"; 
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import { DateRangePicker} from 'react-dates';
 import {setStartDate,setEndDate} from '../actions/filters'
  
 class ExpenseListFilters extends React.Component {
@@ -72,9 +72,4 @@ const mapStateToProps = (state /*, ownProps*/) => {
   }
 
 export default  connect(mapStateToProps)(ExpenseListFilters) ;
-
-/*
-练习
-1.做到input onchange 根据filter& input 筛选
-2. select  onchange 根据filter中的sortby &选择
-*/
+ 

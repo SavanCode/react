@@ -3,7 +3,6 @@ import ExpenseForm from './ExpenseForm'
 import {connect} from 'react-redux'
 import {addExpense} from '../actions/expenses'
 
-
 const AddExpensePage =(props)=> {
 return (
     <div className="addExpense"> 
@@ -16,7 +15,5 @@ return (
     </div>
     )
 }
-
-
 
 export default connect()(AddExpensePage);

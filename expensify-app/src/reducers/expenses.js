@@ -1,5 +1,5 @@
 //default state & reducer
-const expensesReducerDefaultState=[];
+const expensesReducerDefaultState=[{id:"123456",description:"water bill",amount:800,createdAt:100},{id:"654321",description:"gas bill",amount:8020,createdAt:33}];
 const expensesReducer=(state=expensesReducerDefaultState,action)=> {
   switch(action.type){
     case "ADD_EXPENSE": 

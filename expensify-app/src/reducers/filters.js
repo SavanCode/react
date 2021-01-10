@@ -1,5 +1,5 @@
 
-import moment from 'moment'
+//import moment from 'moment'
 const filtersReducerDefaultState={
     text:'',
     sortBy:'amount',//date or amount

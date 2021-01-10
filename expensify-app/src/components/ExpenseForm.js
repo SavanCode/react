@@ -19,14 +19,6 @@ export default class ExpenseForm extends React.Component{
           error: ""
         };
       }
-    // state={
-    //     description:'',
-    //     amount:'',
-    //     note:'',
-    //     createdAt:moment(),
-    //     canlendarFocused: false,
-    //     error:''
-    // }
 
     onDescriptionChange =(e)=>{ 
         //console.log(e.target.value);
@@ -100,9 +92,3 @@ export default class ExpenseForm extends React.Component{
         )
     }
 } 
-
-
-/*
-练习： 做form 进行add expense
-（注意 由于这里多变量，所以是要用类元素）
-*/
